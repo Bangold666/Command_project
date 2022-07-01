@@ -12,7 +12,7 @@ public class PlayerTest {
 
         Player player = new Player("Petya");
         player.installGame(game);
-        player.play(game, 3);
+        player.play(game,3);
 
         int expected = 3;
         int actual = player.sumGenre(game.getGenre());
@@ -20,4 +20,19 @@ public class PlayerTest {
     }
 
     // другие ваши тесты
+
+    @Test
+    public void shouldSumGenreIfReplaySameGame(){
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+
+        Player player = new Player("Petya");
+        player.installGame(game);
+        player.play(game,6);
+        player.play(game,3);
+
+        int expected = 9;
+        int actual = player.sumGenre(game.getGenre());
+        assertEquals(expected, actual);
+    }
 }
