@@ -45,6 +45,7 @@ public class GameStoreTest {
         String expected = "Саша";
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldGetMostPlayerWhenOneHourPlayedTime() {
         GameStore store = new GameStore();
@@ -53,6 +54,7 @@ public class GameStoreTest {
         String expected = "Вася";
         assertEquals(expected, actual);
     }
+
     @Test
     public void shouldGetMostPlayerWhenNoPlayers() {
         GameStore store = new GameStore();
@@ -61,4 +63,15 @@ public class GameStoreTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSumPlayedTime() {
+        GameStore store = new GameStore();
+        store.addPlayTime("Вася", 5);
+        store.addPlayTime("Петя", 1);
+        store.addPlayTime("Саша", 4);
+        int actual = store.getSumPlayedTime();
+        int expected = 10;
+        assertEquals(expected, actual);
+
+    }
 }
