@@ -30,9 +30,9 @@ public class GameStoreTest {
     public void shouldAddPlayTime() {
         GameStore store = new GameStore();
         store.addPlayTime("Вася", 3);
-//        int actual = store.getPlayedTime("Вася");
+       int actual = store.getSumPlayedTime();
         int expected = 3;
-//        assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     @Test
