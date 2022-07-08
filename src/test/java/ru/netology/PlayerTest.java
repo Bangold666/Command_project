@@ -42,7 +42,8 @@ public class PlayerTest {
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Player player = new Player("Petya");
         player.installGame(game);
-        int actual = player.play(game, 3);
+        player.play(game, 3);
+        int actual = store.getSumPlayedTime();
         int expected = 3;
         assertEquals(expected, actual);
     }
