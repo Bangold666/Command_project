@@ -78,4 +78,22 @@ public class PlayerTest {
             player.play(game, 3);
         });
     }
+    
+        @Test
+    public void shouldSumGenreOfTwoGamesIfThreeGames() {
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Game game2 = store.publishGame("Петька и Василий Иванович", "Квест");
+        Game game3 = store.publishGame("Аллоды", "Аркады");
+        Player player = new Player("Petya");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+        player.play(game1, 10);
+        player.play(game2, 4);
+        player.play(game3, 2);
+        int expected = 12;
+        int actual = player.sumGenre(game1.getGenre());
+        assertEquals(expected, actual);
+    }
 }
