@@ -68,4 +68,14 @@ public class PlayerTest {
         assertEquals(expected1, actual1);
         assertEquals(expected2, actual2);
     }
+    
+    @Test
+    public void shouldThrowException() {
+        GameStore store = new GameStore();
+        Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
+        Player player = new Player("Petya");
+        assertThrows(RuntimeException.class, () -> {
+            player.play(game, 3);
+        });
+    }
 }
