@@ -17,7 +17,6 @@ public class GameStoreTest {
 
     @Test
     public void shouldContainGame() {
-
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         boolean actual = store.containsGame(game);
@@ -30,9 +29,19 @@ public class GameStoreTest {
     public void shouldAddPlayTime() {
         GameStore store = new GameStore();
         store.addPlayTime("Вася", 3);
-       int actual = store.getSumPlayedTime();
+        int actual = store.getSumPlayedTime();
         int expected = 3;
         assertEquals(actual, expected);
+    }
+
+    @Test
+    public void shouldAddPlayTimePlayedTwice() {
+        GameStore store = new GameStore();
+        store.addPlayTime("Вася", 3);
+        store.addPlayTime("Вася", 3);
+        int expected = 6;
+        int actual = store.getSumPlayedTime();
+        assertEquals(expected, actual);
     }
 
     @Test
