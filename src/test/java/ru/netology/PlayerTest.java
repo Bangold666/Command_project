@@ -1,7 +1,9 @@
 package ru.netology;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PlayerTest {
 
@@ -12,7 +14,7 @@ public class PlayerTest {
 
         Player player = new Player("Petya");
         player.installGame(game);
-        player.play(game,3);
+        player.play(game, 3);
 
         int expected = 3;
         int actual = player.sumGenre(game.getGenre());
@@ -22,14 +24,14 @@ public class PlayerTest {
     // другие ваши тесты
 
     @Test
-    public void shouldSumGenreIfReplaySameGame(){
+    public void shouldSumGenreIfReplaySameGame() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
 
         Player player = new Player("Petya");
         player.installGame(game);
-        player.play(game,6);
-        player.play(game,3);
+        player.play(game, 6);
+        player.play(game, 3);
 
         int expected = 9;
         int actual = player.sumGenre(game.getGenre());
@@ -47,8 +49,8 @@ public class PlayerTest {
         int expected = 3;
         assertEquals(expected, actual);
     }
-    
-     @Test
+
+    @Test
     public void shouldFindMostPlayedGameByGenre() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
@@ -68,7 +70,7 @@ public class PlayerTest {
         assertEquals(expected1, actual1);
         assertEquals(expected2, actual2);
     }
-    
+
     @Test
     public void shouldThrowException() {
         GameStore store = new GameStore();
@@ -78,8 +80,8 @@ public class PlayerTest {
             player.play(game, 3);
         });
     }
-    
-        @Test
+
+    @Test
     public void shouldSumGenreOfTwoGamesIfThreeGames() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");

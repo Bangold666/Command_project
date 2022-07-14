@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 public class GameStore {
-    private List<Game> games = new ArrayList<>();
+    private final List<Game> games = new ArrayList<>();
 
     /**
      * Информация о том, какой игрок сколько играл в игры этого каталога
      * Ключ - имя игрока
      * Значение - суммарное количество часов в игры этого каталога
      */
-    private Map<String, Integer> playedTime = new HashMap<>();
+    private final Map<String, Integer> playedTime = new HashMap<>();
 
     /**
      * Создание объекта игры с заданными заголовком и жанром
@@ -73,7 +73,7 @@ public class GameStore {
      * за играми этого каталога
      */
     public int getSumPlayedTime() {
-       int sum = 0;
+        int sum = 0;
         for (String playerName : playedTime.keySet()) {
             sum += playedTime.get(playerName);
         }

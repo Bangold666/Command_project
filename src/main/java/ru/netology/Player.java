@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Player {
-    private String name;
+    private final String name;
 
     /**
      * информация о том, в какую игру сколько часов было сыграно
      * ключ - игра
      * значение - суммарное количество часов игры в эту игру
      */
-    private Map<Game, Integer> playedTime = new HashMap<>();
+    private final Map<Game, Integer> playedTime = new HashMap<>();
 
 
     public Player(String name) {
